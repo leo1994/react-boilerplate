@@ -1,5 +1,7 @@
 const path = require('path');
 
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
   entry: path.resolve(__dirname, 'src/index.js'),
   output: {
@@ -17,5 +19,13 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'React Boilerplate',
+      meta: {
+        viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no'
+      }
+    })
+  ]
 };

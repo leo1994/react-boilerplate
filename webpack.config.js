@@ -1,33 +1,53 @@
-const path = require('path');
+const path = require("path");
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
-  entry: path.resolve(__dirname, 'src/index.js'),
+  entry: path.resolve(__dirname, "src/index.js"),
   output: {
-    path: path.resolve(__dirname, './dist'),
-    filename: '[name].[hash].js'
+    path: path.resolve(__dirname, "./dist"),
+    filename: "[name].[hash].js"
   },
   module: {
     rules: [
       {
+        enforce: "pre",
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
+        loader: "eslint-loader",
         options: {
-          presets: ['@babel/preset-env', '@babel/preset-react']
+          fix: true
+        }
+      },
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        loader: "babel-loader",
+        options: {
+          presets: ["@babel/preset-env", "@babel/preset-react"]
         }
       }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'React Boilerplate',
+      title: "React Boilerplate",
       meta: {
-        viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no'
+        viewport: "width=device-width, initial-scale=1, shrink-to-fit=no"
       }
     }),
     new CleanWebpackPlugin()
-  ]
+  ],
+  devServer: {
+    historyApiFallback: true,
+    stats: {
+      children: false,
+      maxModules: 0
+    },
+    hot: true
+  },
+  resolve: {
+    extensions: ["*", ".js", ".jsx"]
+  }
 };

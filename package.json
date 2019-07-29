@@ -2,6 +2,9 @@
   "name": "react-boilerplate",
   "version": "1.0.0",
   "description": "This is my react-boilerplate, usign Redux, StyledComponents, ESLint, etc...",
+  "scripts": {
+    "build": "webpack --mode production"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/leo1994/react-boilerplate.git"
@@ -14,6 +17,9 @@
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.6"
-  }
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.38.0",
+    "webpack-cli": "^3.3.6"
+  },
+  "dependencies": {}
 }

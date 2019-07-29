@@ -15,17 +15,18 @@ module.exports = {
         enforce: "pre",
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        loader: "eslint-loader",
-        options: {
-          fix: true
-        }
+        loader: "eslint-loader"
       },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loader: "babel-loader",
         options: {
-          presets: ["@babel/preset-env", "@babel/preset-react"]
+          presets: ["@babel/preset-env", "@babel/preset-react"],
+          plugins: [
+            "@babel/plugin-syntax-dynamic-import",
+            "@babel/plugin-transform-runtime"
+          ]
         }
       },
       {
@@ -56,6 +57,9 @@ module.exports = {
     hot: true
   },
   resolve: {
-    extensions: ["*", ".js", ".jsx"]
+    extensions: ["*", ".js", ".jsx"],
+    alias: {
+      "react-dom": "@hot-loader/react-dom"
+    }
   }
 };

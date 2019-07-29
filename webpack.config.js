@@ -27,6 +27,14 @@ module.exports = {
         options: {
           presets: ["@babel/preset-env", "@babel/preset-react"]
         }
+      },
+      {
+        test: /\.(jpe?g|png|gif|bmp|svg|ttif)$/i,
+        use: [
+          {
+            loader: "file-loader"
+          }
+        ]
       }
     ]
   },

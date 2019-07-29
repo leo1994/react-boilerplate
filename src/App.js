@@ -1,17 +1,13 @@
 import { hot } from "react-hot-loader/root";
-import React, { useState } from "react";
+import React from "react";
 
-function App() {
-  // Declare uma nova variável de state, a qual chamaremos de "count"
-  const [count, setCount] = useState(0);
+import { BrowserRouter } from "react-router-dom";
+import Router from "./Router";
 
-  return (
-    <div>
-      <p>{`You clicked ${count} times !`}</p>
-      <button type="button" onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
-    </div>
-  );
-}
+const App = () => (
+  <BrowserRouter>
+    <Router />
+  </BrowserRouter>
+);
+
 export default hot(App);

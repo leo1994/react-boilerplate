@@ -1,6 +1,7 @@
 const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   entry: path.resolve(__dirname, 'src/index.js'),
@@ -26,6 +27,7 @@ module.exports = {
       meta: {
         viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no'
       }
-    })
+    }),
+    new CleanWebpackPlugin()
   ]
 };

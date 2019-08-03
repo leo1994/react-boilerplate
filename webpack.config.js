@@ -4,9 +4,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
-  entry: path.resolve(__dirname, "src/index.js"),
+  entry: path.resolve(__dirname, "src", "index.js"),
   output: {
-    path: path.resolve(__dirname, "./build"),
+    path: path.resolve(__dirname, "build"),
     filename: "[name].[hash].js"
   },
   module: {
@@ -33,7 +33,11 @@ module.exports = {
         test: /\.(jpe?g|png|gif|bmp|svg|ttif)$/i,
         use: [
           {
-            loader: "file-loader"
+            loader: "file-loader",
+            options: {
+              name: "[hash].[ext]",
+              publicPath: "assets"
+            }
           }
         ]
       }
@@ -54,6 +58,7 @@ module.exports = {
       children: false,
       maxModules: 0
     },
+    host: "0.0.0.0",
     hot: true
   },
   resolve: {
